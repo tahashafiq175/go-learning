@@ -1,0 +1,78 @@
+Think of `go.sum` as a **security/checksum record for your dependencies**.
+
+### Simple example
+
+You install Gin:
+
+```bash
+go get github.com/gin-gonic/gin
+```
+
+Go creates/updates:
+
+```text
+go.mod
+go.sum
+```
+
+### `go.mod`
+
+Answers:
+
+> **"Which dependencies and versions does my project need?"**
+
+Example:
+
+```go
+require github.com/gin-gonic/gin v1.10.0
+```
+
+### `go.sum`
+
+Answers:
+
+> **"What should the downloaded dependency's content look like?"**
+
+It stores **cryptographic checksums (hashes)**.
+
+Think:
+
+```text
+go.mod
+   ↓
+I need Gin v1.10.0
+```
+
+```text
+go.sum
+   ↓
+The Gin v1.10.0 I downloaded should have this exact checksum
+```
+
+If the downloaded module's contents don't match the expected checksum, Go can detect that something is wrong.
+
+### Easy analogy 🔐
+
+Imagine ordering a sealed product online:
+
+```text
+go.mod → "I ordered Product X, Version 1.0"
+
+go.sum → "This is the expected fingerprint of Product X"
+```
+
+So:
+
+> **`go.mod` = what dependencies I need**
+> **`go.sum` = fingerprints/checksums used to verify those dependencies**
+
+You normally **don't manually edit `go.sum`**. Go manages it for you.
+
+And that's why both are usually committed to Git:
+
+```text
+my-project/
+├── go.mod    ← dependency requirements
+├── go.sum    ← dependency verification
+└── main.go
+```
