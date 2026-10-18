@@ -1,0 +1,1 @@
+A file handle that supports reading and writing, depending on how it was opened.

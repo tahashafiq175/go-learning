@@ -44,3 +44,8 @@ func main(){
 	taha.Start()
 	taha.own()
 }
+
+
+
+
+//the concept of embedding is used in golang to achieve composition. In this example, the Person struct embeds the Car struct, which means that a Person has a Car. This allows us to access the fields and methods of the Car struct directly from the Person struct without having to create a separate instance of Car.

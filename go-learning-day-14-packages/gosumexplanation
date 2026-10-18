@@ -1,4 +1,4 @@
-Think of `go.sum` as a **security/checksum record for your dependencies**.
+<!-- Think of `go.sum` as a **security/checksum record for your dependencies**.
 
 ### Simple example
 
@@ -75,4 +75,4 @@ my-project/
 ├── go.mod    ← dependency requirements
 ├── go.sum    ← dependency verification
 └── main.go
-```
+``` -->
