@@ -159,32 +159,61 @@ import (
 //like in case o f 5th fmt.Println() statement, it will block the execution of the goroutine until there is space in the channel buffer to send the value. Since the main function is sleeping for 2 seconds, it will not read from the channel during that time, and the fifth fmt.Println() statement will not be executed. After 2 seconds, the main function will read from the channel and unblock the goroutine, allowing it to execute the fifth fmt.Println() statement. because the buffer is full to place 4th digit as it has capacity of 3, so it will block the execution of the goroutine until there is space in the channel buffer to send the value. Since the main function is sleeping for 2 seconds, it will not read from the channel during that time, and the fifth fmt.Println() statement will not be executed. After 2 seconds, the main function will read from the channel and unblock the goroutine, allowing it to execute the fifth fmt.Println() statement.	
 
 
-func consumer(wg *sync.WaitGroup,id int,jobs <- chan int){
-	defer wg.Done()	
-	for job := range jobs {
-		fmt.Printf("Consumer %d processing job %d\n", id, job)
-		time.Sleep(1 * time.Second)
-	}
-}
+// func consumer(wg *sync.WaitGroup,id int,jobs <- chan int){
+// 	defer wg.Done()	
+// 	for job := range jobs {
+// 		fmt.Printf("Consumer %d processing job %d\n", id, job)
+// 		time.Sleep(1 * time.Second)
+// 	}
+// }
 
 
-func main(){
-	var jobs sync.WaitGroup;
-	ch:=make(chan int, 5)
+// func main(){
+// 	var jobs sync.WaitGroup;
+// 	ch:=make(chan int, 5)
 
-	for i:=0; i<=3;i++{
-		jobs.Add(1)
-		go consumer(&jobs, i, ch)
-	}
-	for i:=0; i<5;i++{
-		ch <- i
-	}
+// 	for i:=0; i<=3;i++{
+// 		jobs.Add(1)
+// 		go consumer(&jobs, i, ch)
+// 	}
+// 	for i:=0; i<5;i++{
+// 		ch <- i
+// 	}
 
-	close(ch)
-	jobs.Wait()
-	fmt.Println("All jobs processed")
-}
+// 	close(ch)
+// 	jobs.Wait()
+// 	fmt.Println("All jobs processed")
+// 	fmt.
+// }
 
 
 
 //idea of above programme is simples of the things exists on this entire
+
+
+
+// function to multiply two numbers and add 75 to it
+
+// func multiplyAndAdd(a int, b int) int {
+// 	result := a * b
+// 	result += 75
+// 	return result
+// }
+
+"""
+1. Create a list of movies
+2. Create a list of ratings for these movies
+3. Combine them to make a json object of 10 movies with their ratings.
+"""
+
+// movies = ["The Shawshank Redemption", "The Godfather", "The Dark Knight", "Schindler's List", "Pulp Fiction", "The Lord of the Rings: The Return of the King", "Forrest Gump", "Star Wars: Episode V - The Empire Strikes Back", "Inception", "The Silence of the Lambs"]
+// ratings = [9.3, 9.2, 9.0, 8.9, 8.9, 8.9, 8.8, 8.7, 8.7, 8.6]
+
+// movies_with_ratings = [{"movie": movie, "rating": rating} for movie, rating in zip(movies, ratings)]
+
+// print(movies_with_ratings)
+// for movie in movies_with_ratings:
+// 	print(f"Movie: {movie['movie']}, Rating: {movie['rating']}")	
+
+
+
